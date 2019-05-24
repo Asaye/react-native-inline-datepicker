@@ -61,3 +61,6 @@ adjacentMonthsTextColor | #aaa |string | Text color of the dates in the adjacent
 adjacentMonthsBackgroundColor | #888 | string | Background color of the dates in the adjacent months.
 selectedDateTextColor | #ddd | string | Text color of the selected date.
 selectedDateBackgroundColor | #000 | string | Background color of the selected date.
+
+## Issues or suggestions?
+If you have any issues or want to suggest something , your can write it [here](https://github.com/Asaye/react-native-inline-datepicker/issues).
