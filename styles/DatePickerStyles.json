@@ -1,0 +1,58 @@
+{
+  "main": {
+    "width": "100%",
+    "height": "100%",
+    "margin": 0,
+    "padding": 0,
+    "flexDirection": "row",
+    "alignContent": "stretch",
+    "alignItems": "center",  
+    "textAlign": "center",  
+    "justifyContent": "space-between", 
+  },  
+  "row": { 
+    "height": "auto",
+    "marginTop": 1,
+    "marginLeft": 1,
+  },  
+  "text": {
+    "padding": 5,
+    "width": "auto",
+    "marginRight": 0,
+    "marginBottom": 0,
+    "textAlign": "center",
+  },
+  "touchable": {
+    "flex": 1,
+    "marginLeft": 1,
+    "width": "100%",
+    "height": "100%",
+    "textAlign": "center",
+  },
+  "headerContainer": {
+    "flexDirection": "column",
+    "margin": 5, 
+    "marginTop": 10
+  },  
+  "bodyContainer": {
+    "flexDirection": "column",
+    "justifyContent":"space-between"
+  },
+  "header" : {
+    "height": "auto",
+    "marginLeft": 1,
+    "borderLeftWidth": 1,
+    "borderLeftColor": "transparent"
+  },
+  "increment": {
+    "flex": 1, 
+    "padding": 7,
+    "justifyContent": "space-around", 
+  },
+  "selectedMonth": {
+    "flex": 4,
+    "padding": 7,
+    "width": "auto",
+    "justifyContent": "space-around", 
+  },
+}
