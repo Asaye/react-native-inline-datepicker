@@ -64,4 +64,3 @@ selectedDateBackgroundColor | #000 | string | Background color of the selected d
 
 ## Issues or suggestions?
 If you have any issues or want to suggest something , your can write it [here](https://github.com/Asaye/react-native-inline-datepicker/issues).
-[clickhere](https://github.com/Asaye/react-native-inline-datepicker/blob/master/index.js)
