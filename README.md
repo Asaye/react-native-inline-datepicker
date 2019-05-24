@@ -4,16 +4,16 @@ Note that this component is applicable for android apps only.
 
 # Getting Started
 
-## Installation
+### Installation
 $ npm install react-native-inline-datepicker --save
 
 # Usage
 
-## Import
+### Import
 
 ```import InlineDatePicker from 'react-native-inline-datepicker';```
 
-## Example
+### Example
 
 ```
 import InlineDatePicker from 'react-native-inline-datepicker';
@@ -45,7 +45,7 @@ export default class DatePickerDemo extends Component {
 
 Prop | Default | Type | Description
 ------------ | ------------- | ------------- | -------------
-onChangeDate | null | func | Callback function when the user selects a date.
+onChangeDate | null | func | Callback function taking three arguments (year, month, date) to take the user selected year, month and date respectively.
 startDate | null | Array | An array containing three numbers to set the current date of the datepicker. The first element is the year, the second element is the month number ( 0 = January ... 11 = December). If this prop is not defined, the current date on the datepicker will be set to the current date on the user's device.
 fontSize | 18 | number | The font size of all the texts in the datepicker except the title.
 titleFontSize | 20 | number | The font size of the title.
@@ -53,7 +53,7 @@ headerTextColor | #ccc | string | Text color of the header area which contains t
 headerBackgroundColor | #222 | string | Background color of the header area.
 incrementIconTextColor | #ccc | string | The color of the increment icons.
 incrementIconTextSize | 22 | number | The size of the increment icons.
-weekDaysTextColor | #ccc | string | Text color of the week days("S","M","T","W","T","F","S").
+weekDaysTextColor | #ccc | string | Text color of the week days ("S","M","T","W","T","F","S").
 weekDaysBackgroundColor | #222 | string | Background color of the week days.
 currentMonthTextColor | #ccc | string | Text color of the dates within the current month or the months which appear when the header is clicked.
 currentMonthBackgroundColor | #555 | string | Background color of the dates within the current month or the months.
