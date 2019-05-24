@@ -40,6 +40,7 @@ export default class DatePickerDemo extends Component {
   }
 }
 ```
+The screenshot for the above code can be found [here](https://github.com/Asaye/react-native-inline-datepicker/blob/master/Screenshot.png).
 
 # Props 
 
