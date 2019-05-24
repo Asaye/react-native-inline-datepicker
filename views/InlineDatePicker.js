@@ -154,9 +154,9 @@ export default class InlineDatePicker extends Component {
 				{
 					this._weekDays.map((day, index) => {
 						return (
-								<View style = {styles.touchable}>
-									<Text key = {index} 
-										style = {[styles.text, _text_styles]}>{day}
+								<View style = {styles.touchable} key = {index}>
+									<Text style = {[styles.text, _text_styles]}>
+									    {day}
 							   		</Text>
 							   	</View>
 							   	);
