@@ -34,7 +34,7 @@ export default class DatePickerDemo extends Component {
             <View>
               <InlineDatePicker onChangeDate = {this.setDate}/>
               <Text>The selected date is:</Text>
-              <Text>{this.state.year}{-}{this.state.month}{-}{this.state.date}</Text>    
+              <Text>{this.state.year}-{this.state.month}-{this.state.date}</Text>    
             </View>
     );
   }
@@ -64,3 +64,4 @@ selectedDateBackgroundColor | #000 | string | Background color of the selected d
 
 ## Issues or suggestions?
 If you have any issues or want to suggest something , your can write it [here](https://github.com/Asaye/react-native-inline-datepicker/issues).
+[clickhere](https://github.com/Asaye/react-native-inline-datepicker/blob/master/index.js)
