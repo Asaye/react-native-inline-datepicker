@@ -40,3 +40,10 @@ export default class DatePickerDemo extends Component {
   }
 }
 ```
+
+# Props 
+
+Prop | Default | Type | Description
+------------ | ------------- | ------------- | -------------
+onChangeDate | setDate | func | Callback function when the user selects a date.
+startDate | undefined | Array | An array containing three numbers to set the current date of the datepicker. The first element is the year, the second element is the month number ( 0 = January ... 11 = December). If this prop is not defined, the current date on the datepicker will be set to the current date on the user's device.
