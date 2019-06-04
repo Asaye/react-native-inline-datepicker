@@ -11,11 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Asaye"
+    "url": "https://github.com/Asaye/react-native-inline-datepicker"
   },
   "keywords": [
     "DatePicker",
-    "Inline"
+    "Inline",
+    "Android",
+    "React-native"
   ],
   "author": {
     "name": "Asaye Dilbo",
