@@ -1,2 +1,2 @@
 import InlineDatePicker from "./views/InlineDatePicker";
-export default InlineDatePicker;
+module.exports.InlineDatePicker = InlineDatePicker;
