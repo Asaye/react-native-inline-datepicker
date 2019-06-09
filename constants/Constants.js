@@ -19,8 +19,6 @@ const Days = { "January": 31, "February": 28,
                 "November": 30, "December":31
 			};
 
-export { 
-		 Months,
-		 Quarters,
-		 Days,
-		};
+module.exports.Months = Months;
+module.exports.Quarters = Quarters;
+module.exports.Days = Days;
