@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import { Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import DatePickerStyles from '../styles/DatePickerStyles.json';
-import { Months, Quarters, Days } from '../constants/Constants';
+import Constants from '../constants/Constants.js';
 
-export default class InlineDatePicker extends Component {
+const Months = Constants.Months;
+const Quarters = Constants.Quarters;
+const Days = Constants.Days;
+
+var InlineDatePicker = class extends Component {
 	state = {}
 	constructor(props) {
 		super(props);
@@ -284,3 +288,5 @@ InlineDatePicker.defaultProps = {
 	"selectedDateTextColor": "#ddd",
 	"selectedDateBackgroundColor": "#000",
 };
+
+module.exports.InlineDatePicker = InlineDatePicker;
