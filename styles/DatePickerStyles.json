@@ -1,3 +1,4 @@
+module.exports.DatePickerStyles = 
 {
   "main": {
     "width": "100%",
@@ -55,4 +56,4 @@
     "width": "auto",
     "justifyContent": "space-around", 
   },
-}
+};
