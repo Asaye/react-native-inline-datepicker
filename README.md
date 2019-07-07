@@ -1,4 +1,8 @@
 # react-native-inline-datepicker
+
+[![npm version](https://badge.fury.io/js/react-native-inline-datepicker.svg)](https://badge.fury.io/js/react-native-inline-datepicker)
+[![npm downloads](https://img.shields.io/npm/dt/react-native-inline-datepicker.svg)](https://badge.fury.io/js/react-native-inline-datepicker)
+
 This is a datepicker component for react-native apps which will be rendered inline with other components. 
 Note that this component is applicable for android apps only.
 
