@@ -1,7 +1,7 @@
 {
   "name": "react-native-inline-datepicker",
-  "version": "1.0.3",
-  "description": "Android datepicker which will be rendered inline with other react-native components.",
+  "version": "1.0.8",
+  "description": "A simple android datepicker which will be rendered inline with other react-native components.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +23,7 @@
     "name": "Asaye Dilbo",
     "email": "asayechemeda@yahoo.com"
   },
+  "readme": "README.md",
   "bugs": {
     "url": "https://github.com/Asaye/react-native-inline-datepicker/issues"
   },

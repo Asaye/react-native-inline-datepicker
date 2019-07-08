@@ -1,2 +1,2 @@
-import InlineDatePicker from "./views/InlineDatePicker";
-module.exports.InlineDatePicker = InlineDatePicker;
+import InlineDatePicker from "./views/InlineDatePicker.js";
+module.exports = InlineDatePicker;
