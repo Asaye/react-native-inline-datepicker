@@ -71,21 +71,22 @@ selectedDateBackgroundColor | #000 | string | Background color of the selected d
 <div id = "skinColor"/>
 ## skinColor prop
 The optional skinColor property can have values of "red", "green" or "blue" with the following effects.
+
 ##### Default
 
-![Alt text](screenshot_default.png?raw=true width="200" height="200")
+![Screenshot](screenshot_default.png?raw=true)
 
 ##### skinColor = 'red'
 
-![Alt text](screenshot_red.png?raw=true width="200" height="200")
+![Screenshot](screenshot_red.png?raw=true)
 
 ##### skinColor = 'green'
 
-![Alt text](screenshot_green.png?raw=true width="200" height="200")
+![Screenshot](screenshot_green.png?raw=true)
 
 ##### skinColor = 'blue'
 
-![Alt text](screenshot_blue.png?raw=true width="200" height="200")
+![Screenshot](screenshot_blue.png?raw=true)
 
 
 ## Issues or suggestions?
