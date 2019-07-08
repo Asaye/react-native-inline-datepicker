@@ -71,13 +71,13 @@ selectedDateBackgroundColor | #000 | string | Background color of the selected d
 ## skinColor prop
 The optional skinColor property can have values of "red", "green" or "blue" with the following effects.
 
-![Alt text](screenshot_default.jpg?raw=true "Default")
+![Alt text](screenshot_default.png?raw=true "Default")
 
-![Alt text](screenshot_red.jpg?raw=true "skinColor = 'red'")
+![Alt text](screenshot_red.png?raw=true "skinColor = 'red'")
 
-![Alt text](screenshot_green.jpg?raw=true "skinColor = 'green'")
+![Alt text](screenshot_green.png?raw=true "skinColor = 'green'")
 
-![Alt text](screenshot_blue.jpg?raw=true "skinColor = 'blue'")
+![Alt text](screenshot_blue.png?raw=true "skinColor = 'blue'")
 
 ## Issues or suggestions?
 If you have any issues or want to suggest something , your can write it [here](https://github.com/Asaye/react-native-inline-datepicker/issues).
