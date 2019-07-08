@@ -69,7 +69,9 @@ selectedDateTextColor | #ddd | string | Text color of the selected date.
 selectedDateBackgroundColor | #000 | string | Background color of the selected date.
 
 <div id = "skinColor"/>
-## skinColor prop
+
+### skinColor prop
+
 The optional skinColor property can have values of "red", "green" or "blue" with the following effects.
 
 ##### Default
