@@ -52,6 +52,7 @@ Prop | Default | Type | Description
 ------------ | ------------- | ------------- | -------------
 onChangeDate | null | func | Callback function taking three arguments (year, month, date) to take the user selected year, month and date respectively.
 startDate | null | Array | An array containing three numbers to set the current date of the datepicker. The first element is the year, the second element is the month number ( 0 = January ... 11 = December). If this prop is not defined, the current date on the datepicker will be set to the current date on the user's device.
+skinColor | null | enum("red", "green", "blue") | Predefined skin colors for the date picker which provides style alternatives without defining the color properties described below. See [below](#skinColor) for effects.
 fontSize | 18 | number | The font size of all the texts in the datepicker except the title.
 titleFontSize | 20 | number | The font size of the title.
 headerTextColor | #ccc | string | Text color of the header area which contains the selected month and year and the increment icons ("<<", "<", ">", ">>").
@@ -66,6 +67,17 @@ adjacentMonthsTextColor | #aaa |string | Text color of the dates in the adjacent
 adjacentMonthsBackgroundColor | #888 | string | Background color of the dates in the adjacent months.
 selectedDateTextColor | #ddd | string | Text color of the selected date.
 selectedDateBackgroundColor | #000 | string | Background color of the selected date.
+
+## skinColor prop
+The optional skinColor property can have values of "red", "green" or "blue" with the following effects.
+
+![Alt text](screenshot_default.jpg?raw=true "Default")
+
+![Alt text](screenshot_red.jpg?raw=true "skinColor = 'red'")
+
+![Alt text](screenshot_green.jpg?raw=true "skinColor = 'green'")
+
+![Alt text](screenshot_blue.jpg?raw=true "skinColor = 'blue'")
 
 ## Issues or suggestions?
 If you have any issues or want to suggest something , your can write it [here](https://github.com/Asaye/react-native-inline-datepicker/issues).
