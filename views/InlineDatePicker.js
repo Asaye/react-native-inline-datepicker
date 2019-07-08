@@ -1,18 +1,31 @@
 import React, { Component } from 'react'
 import { Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import DatePickerStyles from '../styles/DatePickerStyles.json';
-import Constants from '../constants/Constants.js';
+import Constants from '../constants/Constants';
+import Colors from '../styles/Colors';
 
 const Months = Constants.Months;
 const Quarters = Constants.Quarters;
 const Days = Constants.Days;
 
+const Colors_default = Colors.Colors_default;
+const Colors_bluish = Colors.Colors_bluish;
+const Colors_greenish = Colors.Colors_greenish;
+const Colors_reddish = Colors.Colors_reddish;
+
 var InlineDatePicker = class extends Component {
 	state = {}
 	constructor(props) {
 		super(props);
-
+		if (this.props.skinColor === "red") {
+			this._colors = Colors_reddish;
+		} else if (this.props.skinColor === "green") {
+			this._colors = Colors_greenish;
+		} else if (this.props.skinColor === "blue") {
+			this._colors = Colors_bluish;
+		} else {
+			this._colors = Colors_default;
+		}
 		if (this.props.startDate !== undefined && 
 			Array.isArray(this.props.startDate) && 
 			this.props.startDate.length > 2) {
@@ -52,8 +65,8 @@ var InlineDatePicker = class extends Component {
 		if (month < 0) month = 11;
 		else if (month > 11) m = 0;
 
-		const _month_txt = Months[month],
-			  _n_days = Days[_month_txt];
+		var _month_txt = Months[month],
+			_n_days = Days[_month_txt];
 
 		if ( month === 1 && year % 4 === 0 ) _n_days = 29;
 
@@ -100,70 +113,74 @@ var InlineDatePicker = class extends Component {
 				}
 			}
 		}
-	}
-	_getHeaderColors = (month, day) => {
-		return  {
-					color: this.props.headerTextColor,
-					backgroundColor: this.props.headerBackgroundColor
-				};
-	}
-	_getTitleStyles = () => {
-		return  {					
-					fontWeight: "bold",
-					fontSize: this.props.titleFontSize,
-					color: this.props.headerTextColor,
-					backgroundColor: this.props.headerBackgroundColor
-				};
-	}
-	_getBodyColors = (month, day, long) => {
-		var _color = {
-			color: this.props.currentMonthTextColor,
-			backgroundColor: this.props.currentMonthBackgroundColor
-		};
+	}	
+	_getBodyColors = (month, day, long) => {		   
 		if (this.state.month !== month && long === undefined) {
-			_color = {
-				color: this.props.adjacentMonthsTextColor,
-				backgroundColor: this.props.adjacentMonthsBackgroundColor
+			return {  		
+				"fontSize": 18,	
+				"color": this._colors.datepicker_txt_adj,
+				"backgroundColor": this._colors.datepicker_adj
 			};
 		} else if (this.state.date === day || long) {
-			_color = {
-				color: this.props.selectedDateTextColor,
-				backgroundColor: this.props.selectedDateBackgroundColor
-			};
-		}	
-		_color.fontSize = this.props.fontSize;
-
-		return _color;
+			return {  		
+				"fontSize": 18,	
+				"color": this._colors.datepicker_txt_active,
+				"backgroundColor": this._colors.datepicker_active
+		    };
+		}
+		return {  		
+			"fontSize": 18,	
+			"color": this._colors.datepicker_txt,
+			"backgroundColor": this._colors.datepicker_current
+		}
+	}	
+	_getWeekDaysStyle = () => { 
+		return {
+		    "color": this._colors.datepicker_txt,
+		    "fontSize": 18,
+		    "backgroundColor": this._colors.datepicker_header
+		};
 	}
+	_getHeaderStyle = () => { 
+		return {
+		    "height": "auto",
+		    "width": "auto",
+		    "marginLeft": 2,
+		    "color": this._colors.datepicker_txt,
+			"backgroundColor": this._colors.datepicker_header
+		};
+	}
+	_getTitleStyle = () => { 
+		return {
+		  	"fontWeight": "bold",
+			"fontSize": 20,
+			"color": this._colors.datepicker_txt,
+			"backgroundColor": this._colors.datepicker_header
+		};
+	}	
 	_renderIncrement = (props) => {
 		return (
-				<TouchableOpacity style = {[styles.main, styles.increment]} activeOpacity = {1}
-					onPress = {() => {props.callback(props.value)}}>
-						<Text>
-							<FontAwesome name = {props.name}
-								  color = {this.props.incrementIconTextColor} 
-								  size = {this.props.incrementIconTextSize}/>
-						</Text>
-				</TouchableOpacity>
-				);
+			<View style = {[styles.main, styles.increment]}
+				onTouchStart = {() => {props.callback(props.value)}}>
+				<Text>
+					<FontAwesome name = {props.name} size = {22}
+						  color = {this._colors.datepicker_txt}/>
+				</Text>
+			</View>
+		);
 	}
-	_renderWeekDays = (props) => {
-		const _text_styles = { 
-			                   color: this.props.weekDaysTextColor,
-							   fontSize: this.props.fontSize,
-		                       backgroundColor: this.props.weekDaysBackgroundColor 
-		                     };
+	_renderWeekDays = (props) => {		
 		return (
 			<View style = {[styles.main, styles.row]}>
 				{
 					this._weekDays.map((day, index) => {
 						return (
-								<View style = {styles.touchable} key = {index}>
-									<Text style = {[styles.text, _text_styles]}>
-									    {day}
-							   		</Text>
-							   	</View>
-							   	);
+							<View style = {styles.touchable} key = {index}>
+								<Text style = {[styles.text, this._getWeekDaysStyle()]}>
+									{day}
+						   		</Text>
+						   	</View>
+						);
 				 	})
 			    }
 		    </View>
@@ -171,106 +188,160 @@ var InlineDatePicker = class extends Component {
 	}
 	_renderDates = (props) => {
 		return (
-				<View style = {styles.bodyContainer}>
-					{
-					    this._dates.map((week, index) => {
-						    return (
-						    		<View style = {[styles.main, styles.row]} key = {index}>
-										{
-											week.map((day, j) => {
-												const _color = this._getBodyColors(day.month, day.value);												
-												return(
-												       <TouchableOpacity key = {j} style = {styles.touchable} 
-												       		activeOpacity = {1}
-													        onPress = {() => {this._setDate(day.month, day.value)}}>
-															<Text style = {[_color, styles.text]}>{day.value}</Text>
-													   </TouchableOpacity>
-													   );
-										 	})
-									    }
-								    </View>
-								    )
-						})
-					}
-				</View>
-				);
+			<View style = {styles.bodyContainer}>
+				{
+				    this._dates.map((week, index) => {
+					    return (
+				    		<View style = {[styles.main, styles.row]} key = {index}>
+								{
+									week.map((day, j) => {
+										const _color = this._getBodyColors(day.month, day.value);												
+										return(
+									       <View key = {j} style = {styles.touchable} 
+										        onTouchStart = {() => {this._setDate(day.month, day.value)}}>
+												<Text style = {[_color, styles.text]}>{day.value}</Text>
+										   </View>
+										);
+								 	})
+							    }
+						    </View>
+						)
+					})
+				}
+			</View>
+		);
 	}
 	_renderMonths = (props) => {
 
 		return (
 			<View style = {styles.bodyContainer}>
-					{
-					    Quarters.map((quarter, index) => {
-						    return (
-						    		<View style = {[styles.main, styles.row]} key = {index}>
-										{
-											quarter.map((m, j) => {												
-												const _m_num = Months.indexOf(m),
-												      _color = this._getBodyColors(_m_num, 0, _m_num === this.state.month);												
-												return(
-												       <TouchableOpacity key = {j} style = {styles.touchable} 
-												       		activeOpacity = {1}
-													        onPress = {() => {this._setDate(_m_num);
-													        	              this.setState({long: false});}}>
-															<Text style = {[_color, styles.text, {padding: 10}]}>
-																{m.substring(0, 3)}
-															</Text>
-													   </TouchableOpacity>
-													   );
-										 	})
-									    }
-								    </View>
-								    )
-						})
-					}
-				</View>
+				{
+				    Quarters.map((quarter, index) => {
+					    return (
+				    		<View style = {[styles.main, styles.row]} key = {index}>
+								{
+									quarter.map((m, j) => {												
+										const _m_num = Months.indexOf(m),
+										      _isCurrent = _m_num === this.state.month,
+										      _color = this._getBodyColors(_m_num, 0, _isCurrent);												
+										return(
+									       <View key = {j} style = {styles.touchable} 
+										        onTouchStart = {() => {this._setDate(_m_num);
+										        	            this.setState({long: false});}}>
+												<Text style = {[_color, styles.text, 
+													            {padding: 12, fontSize: 20}]}>
+													{m.substring(0, 3)}
+												</Text>
+										   </View>
+										);
+								 	})
+							    }
+						    </View>
+						)
+					})
+				}
+			</View>
 		);
 	}
 	render() {
 
 		this._fillDates();
 
-		return(
-			    <View style = {styles.headerContainer}>
-					<View style = {[this._getHeaderColors(), styles.main, styles.header]}>
-						<this._renderIncrement name = "angle-double-left" 
-						     callback = {this._setYear} value = {this.state.year - 1}/>
-						{ !this.state.long && 
-							<this._renderIncrement name = "angle-left" 
-							     callback = {this._setDate} value = {this.state.month - 1}/>
-						}
-						
-						<TouchableOpacity style = {[styles.main, styles.selectedMonth]} 
-							onPress = {() => {this.setState({long: !this.state.long})}} activeOpacity = {1}> 
-							<Text style = {this._getTitleStyles()}>
-								{Months[this.state.month]}{" "}{this.state.year}
-							</Text>
-						</TouchableOpacity>
-						     
-						{ !this.state.long && 
-							<this._renderIncrement name = "angle-right" 
-								callback = {this._setDate} value = {this.state.month + 1}/>
-						}
-						<this._renderIncrement name = "angle-double-right" 
-						     callback = {this._setYear} value = {this.state.year + 1}/>
+		return( 
+		    <View style = {styles.headerContainer}>
+				<View style = {[styles.main, this._getHeaderStyle()]}>
+					<this._renderIncrement name = "angle-double-left" 
+					     callback = {this._setYear} value = {this.state.year - 1}/>
+					{ !this.state.long && 
+						<this._renderIncrement name = "angle-left" 
+						     callback = {this._setDate} value = {this.state.month - 1}/>
+					}
+					
+					<View style = {[styles.main, styles.selectedMonth]} 
+						onTouchStart = {() => {this.setState({long: !this.state.long})}}> 
+						<Text style = {this._getTitleStyle()}>
+							{Months[this.state.month]}{" "}{this.state.year}
+						</Text>
 					</View>
-					{ !this.state.long &&
-						<View>
-							<this._renderWeekDays/>
-							<this._renderDates/>
-						</View>
+					     
+					{ !this.state.long && 
+						<this._renderIncrement name = "angle-right" 
+							callback = {this._setDate} value = {this.state.month + 1}/>
 					}
-					{ this.state.long && 
-						<View style = {styles.bodyContainer}>
-							<this._renderMonths/>
-						</View>
-					}
-			    </View>
-			    );
-		}		  
+					<this._renderIncrement name = "angle-double-right" 
+					     callback = {this._setYear} value = {this.state.year + 1}/>
+				</View>
+				{ !this.state.long &&
+					<View>
+						<this._renderWeekDays/>
+						<this._renderDates/>
+					</View>
+				}
+				{ this.state.long && 
+					<View style = {styles.bodyContainer}>
+						<this._renderMonths/>
+					</View>
+				}
+		    </View>
+		);
+	}		  
 }
 
-const styles = StyleSheet.create(DatePickerStyles);
+module.exports = InlineDatePicker;
+
+const styles = StyleSheet.create({
+  "main": {
+    "width": "100%",
+    "height": "100%",
+    "margin": 0,
+    "padding": 0,
+    "flexDirection": "row",
+    "alignContent": "stretch",
+    "alignItems": "center",  
+    "textAlign": "center",  
+    "justifyContent": "space-between", 
+  },  
+  "row": { 
+    "height": "auto",
+    "width": "auto",
+    "marginTop": 1,
+    "marginLeft": 1,
+  },  
+  "text": {
+    "padding": 5,
+    "width": "auto",
+    "marginRight": 0,
+    "marginBottom": 0,
+    "textAlign": "center",
+  },
+  "touchable": {
+    "flex": 1,
+    "marginLeft": 1,
+    "width": "100%",
+    "height": "100%",
+    "textAlign": "center",
+  },
+  "headerContainer": {
+    "flexDirection": "column",
+    "margin": 5, 
+    "marginTop": 5,
+  },  
+  "bodyContainer": {
+    "flexDirection": "column",
+    "justifyContent":"space-between"
+  },  
+  "increment": {
+    "flex": 1, 
+    "padding": 7,
+    "justifyContent": "space-around", 
+  },
+  "selectedMonth": {
+    "flex": 4,
+    "padding": 7,
+    "width": "auto",
+    "justifyContent": "space-around", 
+  },  
+});
 
 InlineDatePicker.defaultProps = {		
 	"fontSize": 18,	
@@ -288,5 +359,3 @@ InlineDatePicker.defaultProps = {
 	"selectedDateTextColor": "#ddd",
 	"selectedDateBackgroundColor": "#000",
 };
-
-module.exports.InlineDatePicker = InlineDatePicker;
