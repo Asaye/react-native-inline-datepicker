@@ -68,16 +68,17 @@ adjacentMonthsBackgroundColor | #888 | string | Background color of the dates in
 selectedDateTextColor | #ddd | string | Text color of the selected date.
 selectedDateBackgroundColor | #000 | string | Background color of the selected date.
 
+###skinColor
 ## skinColor prop
 The optional skinColor property can have values of "red", "green" or "blue" with the following effects.
-
-![Alt text](screenshot_default.png?raw=true "Default")
-
-![Alt text](screenshot_red.png?raw=true "skinColor = 'red'")
-
-![Alt text](screenshot_green.png?raw=true "skinColor = 'green'")
-
-![Alt text](screenshot_blue.png?raw=true "skinColor = 'blue'")
+##### Default
+![Alt text](screenshot_default.png?raw=true width="200" height="200")
+##### skinColor = 'red'
+![Alt text](screenshot_red.png?raw=true width="200" height="200")
+##### skinColor = 'green'
+![Alt text](screenshot_green.png?raw=true width="200" height="200")
+##### skinColor = 'blue'
+![Alt text](screenshot_blue.png?raw=true width="200" height="200")
 
 ## Issues or suggestions?
 If you have any issues or want to suggest something , your can write it [here](https://github.com/Asaye/react-native-inline-datepicker/issues).
