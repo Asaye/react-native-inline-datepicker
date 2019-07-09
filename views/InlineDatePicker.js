@@ -8,7 +8,6 @@ const Months = Constants.Months;
 const Quarters = Constants.Quarters;
 const Days = Constants.Days;
 
-const Colors_default = Colors.Colors_default;
 const Colors_bluish = Colors.Colors_bluish;
 const Colors_greenish = Colors.Colors_greenish;
 const Colors_reddish = Colors.Colors_reddish;
@@ -24,7 +23,15 @@ var InlineDatePicker = class extends Component {
 		} else if (this.props.skinColor === "blue") {
 			this._colors = Colors_bluish;
 		} else {
-			this._colors = Colors_default;
+			this._colors = {	
+				"datepicker_header": this.props.headerBackgroundColor,
+				"datepicker_txt": this.props.textColor,
+				"datepicker_txt_active": this.props.activeTextColor,	
+				"datepicker_txt_adj": this.props.adjacentTextColor,
+				"datepicker_current": this.props.currentMonthBackgroundColor,	
+				"datepicker_adj": this.props.adjacentMonthsBackgroundColor,
+				"datepicker_active": this.props.selectedDateBackgroundColor,
+			};
 		}
 		if (this.props.startDate !== undefined && 
 			Array.isArray(this.props.startDate) && 
@@ -117,19 +124,19 @@ var InlineDatePicker = class extends Component {
 	_getBodyColors = (month, day, long) => {		   
 		if (this.state.month !== month && long === undefined) {
 			return {  		
-				"fontSize": 18,	
+				"fontSize": this.props.fontSize,	
 				"color": this._colors.datepicker_txt_adj,
 				"backgroundColor": this._colors.datepicker_adj
 			};
 		} else if (this.state.date === day || long) {
 			return {  		
-				"fontSize": 18,	
+				"fontSize": this.props.fontSize,	
 				"color": this._colors.datepicker_txt_active,
 				"backgroundColor": this._colors.datepicker_active
 		    };
 		}
 		return {  		
-			"fontSize": 18,	
+			"fontSize": this.props.fontSize,	
 			"color": this._colors.datepicker_txt,
 			"backgroundColor": this._colors.datepicker_current
 		}
@@ -137,7 +144,7 @@ var InlineDatePicker = class extends Component {
 	_getWeekDaysStyle = () => { 
 		return {
 		    "color": this._colors.datepicker_txt,
-		    "fontSize": 18,
+		    "fontSize": this.props.fontSize,
 		    "backgroundColor": this._colors.datepicker_header
 		};
 	}
@@ -153,7 +160,7 @@ var InlineDatePicker = class extends Component {
 	_getTitleStyle = () => { 
 		return {
 		  	"fontWeight": "bold",
-			"fontSize": 20,
+			"fontSize": this.props.titleFontSize,
 			"color": this._colors.datepicker_txt,
 			"backgroundColor": this._colors.datepicker_header
 		};
@@ -163,7 +170,7 @@ var InlineDatePicker = class extends Component {
 			<View style = {[styles.main, styles.increment]}
 				onTouchStart = {() => {props.callback(props.value)}}>
 				<Text>
-					<FontAwesome name = {props.name} size = {22}
+					<FontAwesome name = {props.name} size = {this.props.iconSize}
 						  color = {this._colors.datepicker_txt}/>
 				</Text>
 			</View>
@@ -229,7 +236,7 @@ var InlineDatePicker = class extends Component {
 										        onTouchStart = {() => {this._setDate(_m_num);
 										        	            this.setState({long: false});}}>
 												<Text style = {[_color, styles.text, 
-													            {padding: 12, fontSize: 20}]}>
+													            {padding: 12, fontSize: this.props.titleFontSize}]}>
 													{m.substring(0, 3)}
 												</Text>
 										   </View>
@@ -346,16 +353,12 @@ const styles = StyleSheet.create({
 InlineDatePicker.defaultProps = {		
 	"fontSize": 18,	
     "titleFontSize": 20,
-	"headerTextColor": "#ccc",
-	"headerBackgroundColor": "#222",	
-	"incrementIconTextColor": "#ccc",
-	"incrementIconTextSize": 22,	
-	"weekDaysTextColor": "#ccc",
-	"weekDaysBackgroundColor": "#222",
-	"currentMonthTextColor": "#ccc",
+	"textColor": "#ddd",
+	"activeTextColor": "#ddd",
+	"adjacentTextColor": "#ccc",
+	"headerBackgroundColor": "#222",
+	"iconSize": 22,	
 	"currentMonthBackgroundColor": "#555",
-	"adjacentMonthsTextColor": "#aaa",
 	"adjacentMonthsBackgroundColor": "#888",
-	"selectedDateTextColor": "#ddd",
 	"selectedDateBackgroundColor": "#000",
 };
