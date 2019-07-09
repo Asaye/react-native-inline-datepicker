@@ -55,17 +55,13 @@ startDate | null | Array | An array containing three numbers to set the current 
 skinColor | null | enum("red", "green", "blue") | Predefined skin colors for the date picker which provides style alternatives without defining the color properties described below. See <a href = "#skinColor">below</a> for effects.
 fontSize | 18 | number | The font size of all the texts in the datepicker except the title.
 titleFontSize | 20 | number | The font size of the title.
-headerTextColor | #ccc | string | Text color of the header area which contains the selected month and year and the increment icons ("<<", "<", ">", ">>").
-headerBackgroundColor | #222 | string | Background color of the header area.
-incrementIconTextColor | #ccc | string | The color of the increment icons.
-incrementIconTextSize | 22 | number | The size of the increment icons.
-weekDaysTextColor | #ccc | string | Text color of the week days ("S","M","T","W","T","F","S").
-weekDaysBackgroundColor | #222 | string | Background color of the week days.
-currentMonthTextColor | #ccc | string | Text color of the dates within the current month or the months which appear when the header is clicked.
-currentMonthBackgroundColor | #555 | string | Background color of the dates within the current month or the months.
-adjacentMonthsTextColor | #aaa |string | Text color of the dates in the adjacent months if they are included in the grid of current month.
+textColor | #ddd | string | Text color all texts in the current month.
+activeTextColor | #ddd | string | Text color of selected date or month.
+adjacentTextColor | #ccc | string | Text color of ajacent months.
+iconSize | 22 | number | The size of the increment icons.
+headerBackgroundColor | #222 | string | Background color of the header.
+currentMonthBackgroundColor | #555 | string | Background color of the dates within the current month or the months which appear when the header is clicked.
 adjacentMonthsBackgroundColor | #888 | string | Background color of the dates in the adjacent months.
-selectedDateTextColor | #ddd | string | Text color of the selected date.
 selectedDateBackgroundColor | #000 | string | Background color of the selected date.
 
 <div id = "skinColor"/>
